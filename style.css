@@ -164,58 +164,52 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Individual Ambient Light Orbs with fixed pre-rendered blur */
+/* Individual Ambient Light Orbs with pure soft radial gradients (Zero CPU Blur, Pure Native GPU) */
 .ambient-orb {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
   transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000px;
 }
 
-/* Central Main Living Light (Screen ke beech me smooth khilti hui roshni) */
+/* Central Main Living Light (Screen ke beech me khilti hui radiant roshni) */
 .orb-center {
   top: 45%;
   left: 50%;
-  width: clamp(350px, 50vw, 700px);
-  height: clamp(350px, 50vw, 700px);
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.35) 0%, rgba(245, 158, 11, 0.25) 45%, rgba(56, 189, 248, 0.15) 65%, transparent 80%);
-  filter: blur(60px);
-  animation: orbCenterFlow 20s linear infinite;
+  width: clamp(380px, 55vw, 750px);
+  height: clamp(380px, 55vw, 750px);
+  background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.28) 0%, rgba(245, 158, 11, 0.18) 35%, rgba(56, 189, 248, 0.08) 55%, transparent 75%);
+  animation: orbCenterFlow 24s linear infinite;
 }
 
 /* Emerald Ayurvedic Healing Light (Top Left) */
 .orb-emerald {
-  top: 10%;
-  left: 10%;
-  width: clamp(260px, 35vw, 500px);
-  height: clamp(260px, 35vw, 500px);
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.32) 0%, rgba(5, 150, 105, 0.12) 55%, transparent 75%);
-  filter: blur(50px);
-  animation: orbEmeraldFlow 16s ease-in-out infinite alternate;
+  top: 8%;
+  left: 8%;
+  width: clamp(280px, 38vw, 520px);
+  height: clamp(280px, 38vw, 520px);
+  background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.25) 0%, rgba(5, 150, 105, 0.1) 45%, transparent 70%);
+  animation: orbEmeraldFlow 18s ease-in-out infinite alternate;
 }
 
 /* Saffron / Golden Prosperity Light (Bottom Right) */
 .orb-gold {
-  bottom: 12%;
-  right: 10%;
-  width: clamp(280px, 38vw, 520px);
-  height: clamp(280px, 38vw, 520px);
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.32) 0%, rgba(217, 119, 6, 0.12) 55%, transparent 75%);
-  filter: blur(50px);
-  animation: orbGoldFlow 18s ease-in-out infinite alternate;
+  bottom: 10%;
+  right: 8%;
+  width: clamp(300px, 40vw, 540px);
+  height: clamp(300px, 40vw, 540px);
+  background: radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.25) 0%, rgba(217, 119, 6, 0.1) 45%, transparent 70%);
+  animation: orbGoldFlow 20s ease-in-out infinite alternate;
 }
 
 /* Cyan / Vitality Light (Top Right) */
 .orb-cyan {
-  top: 20%;
-  right: 12%;
-  width: clamp(240px, 32vw, 450px);
-  height: clamp(240px, 32vw, 450px);
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, rgba(14, 165, 233, 0.08) 60%, transparent 80%);
-  filter: blur(50px);
-  animation: orbCyanFlow 22s ease-in-out infinite alternate;
+  top: 18%;
+  right: 10%;
+  width: clamp(250px, 34vw, 460px);
+  height: clamp(250px, 34vw, 460px);
+  background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.2) 0%, rgba(14, 165, 233, 0.08) 50%, transparent 75%);
+  animation: orbCyanFlow 24s ease-in-out infinite alternate;
 }
 
 /* Ambient wave across center */

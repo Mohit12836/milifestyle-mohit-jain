@@ -22,29 +22,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 2. Active Nav Link on Scroll
-  const sections = document.querySelectorAll('section[id]');
+  // 2. Performant Active Nav Link using IntersectionObserver (Zero Scroll Lag)
   const navLinks = document.querySelectorAll('.desktop-nav .nav-link');
+  const sections = document.querySelectorAll('section[id]');
+  
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -70% 0px' });
 
-  window.addEventListener('scroll', () => {
-    let current = '';
-    const scrollY = window.pageYOffset;
-
-    sections.forEach(section => {
-      const sectionHeight = section.offsetHeight;
-      const sectionTop = section.offsetTop - 120;
-      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-        current = section.getAttribute('id');
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
-      }
-    });
-  });
+    sections.forEach(sec => observer.observe(sec));
+  }
 
   // 3. Product Catalog Filter
   const filterBtns = document.querySelectorAll('.filter-btn');
