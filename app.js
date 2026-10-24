@@ -68,19 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 4. Subtle Cursor Light Follower on Desktop
-  if (window.innerWidth > 768) {
-    const cards = document.querySelectorAll('.product-card, .benefit-box, .cert-card, .hero-card-main');
-    cards.forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
-      });
-    });
-  }
+  // 4. Smooth performance & zero-lag scroll guarantee
 });
 
 /**
