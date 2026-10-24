@@ -1,6 +1,7 @@
 /**
  * Mi Lifestyle & Elements Wellness - Mohit P Jain
- * Interactive behaviors: Category filter, mobile drawer, WhatsApp pre-filled form
+ * Interactive behaviors: Category filter, mobile drawer, WhatsApp pre-filled form,
+ * Dynamic cursor spotlight and tilt physics for cards.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -51,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      // Toggle active button
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
@@ -61,13 +61,26 @@ document.addEventListener('DOMContentLoaded', () => {
         const cardCat = card.getAttribute('data-category');
         if (filterVal === 'all' || cardCat === filterVal) {
           card.style.display = 'flex';
-          card.style.animation = 'fadeIn 0.3s ease';
         } else {
           card.style.display = 'none';
         }
       });
     });
   });
+
+  // 4. Subtle Cursor Light Follower on Desktop
+  if (window.innerWidth > 768) {
+    const cards = document.querySelectorAll('.product-card, .benefit-box, .cert-card, .hero-card-main');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+  }
 });
 
 /**
